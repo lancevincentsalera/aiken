@@ -460,7 +460,7 @@ impl ToPlutusData for ScriptRef<'_> {
     }
 }
 
-impl<'a> ToPlutusData for WithOptionDatum<'a, WithZeroAdaAsset<'a, Vec<TransactionOutput<'_>>>> {
+impl ToPlutusData for WithOptionDatum<'_, WithZeroAdaAsset<'_, Vec<TransactionOutput<'_>>>> {
     fn to_plutus_data(&self) -> PlutusData {
         Data::list(
             self.0
@@ -483,7 +483,7 @@ impl ToPlutusData for WithZeroAdaAsset<'_, Vec<TransactionOutput<'_>>> {
     }
 }
 
-impl<'a> ToPlutusData for WithOptionDatum<'a, WithZeroAdaAsset<'a, TransactionOutput<'_>>> {
+impl ToPlutusData for WithOptionDatum<'_, WithZeroAdaAsset<'_, TransactionOutput<'_>>> {
     fn to_plutus_data(&self) -> PlutusData {
         match self.0.0 {
             TransactionOutput::Legacy(legacy_output) => {
@@ -856,8 +856,8 @@ impl ToPlutusData for TimeRange {
     }
 }
 
-impl<'a> ToPlutusData
-    for WithOptionDatum<'a, WithZeroAdaAsset<'a, WithWrappedTransactionId<'a, Vec<TxInInfo<'_>>>>>
+impl ToPlutusData
+    for WithOptionDatum<'_, WithZeroAdaAsset<'_, WithWrappedTransactionId<'_, Vec<TxInInfo<'_>>>>>
 {
     fn to_plutus_data(&self) -> PlutusData {
         Data::list(
@@ -874,7 +874,7 @@ impl<'a> ToPlutusData
     }
 }
 
-impl<'a> ToPlutusData for WithZeroAdaAsset<'a, WithWrappedTransactionId<'a, Vec<TxInInfo<'_>>>> {
+impl ToPlutusData for WithZeroAdaAsset<'_, WithWrappedTransactionId<'_, Vec<TxInInfo<'_>>>> {
     fn to_plutus_data(&self) -> PlutusData {
         Data::list(
             self.0
@@ -886,7 +886,7 @@ impl<'a> ToPlutusData for WithZeroAdaAsset<'a, WithWrappedTransactionId<'a, Vec<
     }
 }
 
-impl<'a> ToPlutusData for WithZeroAdaAsset<'a, WithWrappedTransactionId<'a, TxInInfo<'_>>> {
+impl ToPlutusData for WithZeroAdaAsset<'_, WithWrappedTransactionId<'_, TxInInfo<'_>>> {
     fn to_plutus_data(&self) -> PlutusData {
         wrap_multiple_with_constr(
             0,
@@ -898,8 +898,8 @@ impl<'a> ToPlutusData for WithZeroAdaAsset<'a, WithWrappedTransactionId<'a, TxIn
     }
 }
 
-impl<'a> ToPlutusData
-    for WithOptionDatum<'a, WithZeroAdaAsset<'a, WithWrappedTransactionId<'a, TxInInfo<'_>>>>
+impl ToPlutusData
+    for WithOptionDatum<'_, WithZeroAdaAsset<'_, WithWrappedTransactionId<'_, TxInInfo<'_>>>>
 {
     fn to_plutus_data(&self) -> PlutusData {
         wrap_multiple_with_constr(
