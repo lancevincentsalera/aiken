@@ -13,6 +13,7 @@ use num_bigint::BigInt;
 use num_traits::ToPrimitive;
 use pallas_addresses::{Network, ShelleyAddress, ShelleyDelegationPart, ShelleyPaymentPart};
 use pallas_primitives::{
+    MaybeIndefArray,
     alonzo::{self, Constr, PlutusData},
     conway::{self, Language},
 };
@@ -421,17 +422,17 @@ impl Data {
 
     pub fn list(xs: Vec<PlutusData>) -> PlutusData {
         PlutusData::Array(if xs.is_empty() {
-            conway::MaybeIndefArray::Def(xs)
+            MaybeIndefArray::Def(xs)
         } else {
-            conway::MaybeIndefArray::Indef(xs)
+            MaybeIndefArray::Indef(xs)
         })
     }
 
     pub fn constr(ix: u64, fields: Vec<PlutusData>) -> PlutusData {
         let fields = if fields.is_empty() {
-            conway::MaybeIndefArray::Def(fields)
+            MaybeIndefArray::Def(fields)
         } else {
-            conway::MaybeIndefArray::Indef(fields)
+            MaybeIndefArray::Indef(fields)
         };
 
         // NOTE: see https://github.com/input-output-hk/plutus/blob/9538fc9829426b2ecb0628d352e2d7af96ec8204/plutus-core/plutus-core/src/PlutusCore/Data.hs#L139-L155

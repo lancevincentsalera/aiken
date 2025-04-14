@@ -7,8 +7,8 @@ use error::Error;
 use pallas_primitives::{
     Fragment,
     conway::{
-        CostModels, ExUnits, MintedTx, Redeemer, Redeemers, RedeemersKey, TransactionInput,
-        TransactionOutput,
+        CostModels, ExUnits, Redeemer, Redeemers, RedeemersKey, TransactionInput,
+        TransactionOutput, Tx,
     },
 };
 use pallas_traverse::{Era, MultiEraTx};
@@ -29,7 +29,7 @@ pub mod to_plutus_data;
 /// You may optionally run a subset of phase one checks on
 /// redeemers and scripts.
 pub fn eval_phase_two(
-    tx: &MintedTx,
+    tx: &Tx,
     utxos: &[ResolvedInput],
     cost_mdls: Option<&CostModels>,
     initial_budget: Option<&ExBudget>,

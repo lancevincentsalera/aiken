@@ -13,10 +13,10 @@ use crate::{
     },
 };
 use pallas_codec::utils::Bytes;
-use pallas_primitives::conway::{CostModel, CostModels, ExUnits, Language, MintedTx, Redeemer};
+use pallas_primitives::conway::{CostModel, CostModels, ExUnits, Language, Redeemer, Tx};
 
 pub fn eval_redeemer(
-    tx: &MintedTx,
+    tx: &Tx,
     utxos: &[ResolvedInput],
     slot_config: &SlotConfig,
     redeemer: &Redeemer,
@@ -38,7 +38,7 @@ pub fn eval_redeemer(
             .expect("couldn't create script context from transaction?");
 
         let program = match script_context {
-            ScriptContext::V1V2 { .. } => if let Some(datum) = datum {
+            ScriptContext::V1V2 { .. } => if let Some(datum) = datum.clone() {
                 program.apply_data(datum)
             } else {
                 program

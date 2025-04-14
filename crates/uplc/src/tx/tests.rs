@@ -1,3 +1,5 @@
+use std::collections::BTreeMap;
+
 use super::{ResolvedInput, SlotConfig, eval_phase_two};
 use crate::machine::cost_model::ExBudget;
 use pallas_codec::utils::MaybeIndefArray;
@@ -226,6 +228,7 @@ fn test_eval_0() {
         plutus_v1: None,
         plutus_v2: Some(costs),
         plutus_v3: None,
+        unknown: BTreeMap::new(),
     };
 
     let initial_budget = ExBudget {
@@ -498,6 +501,7 @@ fn test_eval_1() {
         plutus_v1: None,
         plutus_v2: Some(costs),
         plutus_v3: None,
+        unknown: BTreeMap::new(),
     };
 
     let initial_budget = ExBudget {
@@ -610,6 +614,7 @@ fn test_eval_2() {
         plutus_v1: Some(costs),
         plutus_v2: None,
         plutus_v3: None,
+        unknown: BTreeMap::new(),
     };
 
     let initial_budget = ExBudget {
@@ -880,6 +885,7 @@ fn test_eval_3() {
         plutus_v1: None,
         plutus_v2: Some(costs),
         plutus_v3: None,
+        unknown: BTreeMap::new(),
     };
 
     let initial_budget = ExBudget {
@@ -988,6 +994,7 @@ fn test_eval_4() {
         plutus_v1: Some(costs),
         plutus_v2: None,
         plutus_v3: None,
+        unknown: BTreeMap::new(),
     };
 
     let initial_budget = ExBudget {
@@ -1075,6 +1082,7 @@ fn test_eval_5() {
         plutus_v1: Some(costs),
         plutus_v2: None,
         plutus_v3: None,
+        unknown: BTreeMap::new(),
     };
 
     let initial_budget = ExBudget {
@@ -1185,6 +1193,7 @@ fn test_eval_6() {
         plutus_v1: Some(costs),
         plutus_v2: None,
         plutus_v3: None,
+        unknown: BTreeMap::new(),
     };
 
     let initial_budget = ExBudget {
@@ -1295,6 +1304,7 @@ fn test_eval_7() {
         plutus_v1: Some(costs),
         plutus_v2: None,
         plutus_v3: None,
+        unknown: BTreeMap::new(),
     };
 
     let initial_budget = ExBudget {
@@ -1556,6 +1566,7 @@ fn test_eval_8() {
         plutus_v1: None,
         plutus_v2: Some(costs),
         plutus_v3: None,
+        unknown: BTreeMap::new(),
     };
 
     let initial_budget = ExBudget {
@@ -1662,6 +1673,7 @@ fn eval_missing_redeemer() {
         plutus_v1: Some(costs),
         plutus_v2: None,
         plutus_v3: None,
+        unknown: BTreeMap::new(),
     };
 
     let initial_budget = ExBudget {
@@ -1745,6 +1757,7 @@ fn eval_extraneous_redeemer() {
         plutus_v1: Some(costs),
         plutus_v2: None,
         plutus_v3: None,
+        unknown: BTreeMap::new(),
     };
 
     let initial_budget = ExBudget {
